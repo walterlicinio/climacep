@@ -55,7 +55,7 @@ func TestHandleClimateRequest_NotFoundZipcode(t *testing.T) {
 	handler := http.HandlerFunc(handleClimateRequest)
 	handler.ServeHTTP(rr, req)
 
-	if status := rr.Code; status != http.StatusInternalServerError {
+	if status := rr.Code; status != http.StatusNotFound {
 		t.Errorf("handler returned wrong status code: got %v want %v",
 			status, http.StatusNotFound)
 	}

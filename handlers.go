@@ -23,8 +23,8 @@ func handleClimateRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	location, err := fetchLocation(cep)
-	if err != nil {
-		log.Printf("Error fetching location: %v", err)
+	if location == ", " {
+		log.Printf("can not find zipcode: %v", err)
 		http.Error(w, "can not find zipcode", http.StatusNotFound)
 		return
 	}
